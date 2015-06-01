@@ -1,0 +1,964 @@
+/*
+.parallax__group {
+    -webkit-transform: translate3d(800px, 0, -800px) rotateY(30deg);
+    transform: translate3d(700px, 0, -800px) rotateY(30deg);
+ }*/
+
+/* FONTS IMPORT */
+@font-face {
+  font-family: "Proxima Nova Light";
+  src: url(../src/Proxima Nova Light.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Franklin Gothic";
+  src: url(../src/fg.ttf) format("truetype");
+}
+
+
+
+
+.hidden{
+  height:0;
+}
+
+#progress{
+  height:100vh;
+  background-color:#333;
+}
+
+#spinner{
+
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 2000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 2000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 2000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: spin;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+  @-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+  }
+  @-webkit-keyframes spin {
+      from { -webkit-transform: rotate(0deg); }
+      to { -webkit-transform: rotate(360deg); }
+  }
+  @keyframes spin {
+      from {transform:rotate(0deg);}
+      to {transform:rotate(360deg);}
+  }
+
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+/* GENERAL BEHAVE */
+
+body{
+  margin:0;
+  overflow:hidden;
+}
+
+h1{
+  font-size:3rem;
+  font-weight:600;
+  color:#f3f3f3;
+  font-family:"Franklin Gothic";
+  padding:3vh;
+  background-color:#0d0d0d;
+}
+
+h2{
+  font-size:2.7rem;
+  font-weight:400;
+  color:#e2e2e2;
+  font-family:"Franklin Gothic";
+  padding:3vh;
+  background-color:#0d0d0d;
+}
+
+p{
+  background-color:#0d0d0d;
+  padding:10px;
+  border-radius:20px;
+  opacity:.93;
+  margin:8vh auto;
+  max-width:500px;
+  border-bottom-left-radius:0;
+}
+
+*{
+  text-align:center;
+  color:#eee;
+  font-size:1.002rem;
+  font-weight:300;
+  font-family: 'Open Sans', sans-serif;
+}
+
+strong{
+  font-weight:800;
+  color:#fff;
+}
+
+em{
+  font-size:1.02rem;
+  color:#fff;
+}
+
+
+iframe{
+  opacity:.8;
+}
+
+iframe:hover{
+  opacity:1;
+}
+
+iframe:active {
+  opacity:1;
+}
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+/* PARALLAX GENERAL */
+
+  .parallax {
+    /*height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    width:100vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-perspective: 300px;
+    perspective: 300px;
+    background-color:#111;
+  }
+
+  .parallax__group {
+    /*position: relative;*/
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  .parallax__group {
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: transform 1s;
+  }
+
+  .parallax__layer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .parallax__layer--fore {
+    -webkit-transform: translateZ(90px) scale(.7);
+    transform: translateZ(90px) scale(.7);
+    z-index: 1;
+  }
+
+  .parallax__layer--base {
+    height:150vh;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 4;
+  }
+
+  .parallax__layer--back {
+    -webkit-transform: translateZ(-300px) scale(2);
+    transform: translateZ(-300px) scale(2);
+    z-index: 3;
+  }
+
+  .parallax__layer--deep {
+    -webkit-transform: translateZ(-600px) scale(3);
+    transform: translateZ(-600px) scale(3);
+    z-index: 2;
+  }
+  
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+*  TITLES*/
+  
+  .title{
+    font-size:600%;
+    font-weight:600;
+    color:#f3f3f3;
+    font-family:"Franklin Gothic";
+  }
+  
+  .subtitle{
+    font-size:300%;
+    font-weight:200;
+    color:#a2a2a2;
+    font-family:"Franklin Gothic";
+  }
+  
+  .chtitle{
+    font-size:300%;
+    font-weight:600;
+    color:#f3f3f3;
+    font-family:"Franklin Gothic";
+  }
+  
+  .chsubtitle{
+    font-size:200%;
+    font-weight:200;
+    color:#a2a2a2;
+    font-family:"Franklin Gothic";
+  }
+  
+  #tit6, #tit15 {
+    font-size:75%;
+  }
+  
+  .titlediv {
+    height:100vh;
+  }
+  
+  .titlediv .parallax__layer--base {
+    background: #111;
+  }
+  
+  .titlediv:nth-child(3) .parallax__layer--base {
+    background: #141414;
+  }
+  /*
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  * SECTIONS */
+  
+  .section{
+    height:70vh;
+  }
+  
+  .section .parallax__layer--base {
+    background: #181818;
+  }
+  
+  #sec2 .parallax__layer--base {
+    background: #373737;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* GROUP */
+  
+  #group0 .parallax__layer--base {
+    background:  #111 url("../src/bell.png") no-repeat left bottom;
+    background-size:50%;
+  }
+  
+  #group0{
+    height:150vh;
+  }
+  
+  
+  
+  
+  
+  
+  #group2 {
+    height:150vh;
+  }
+  
+  #group2 .parallax__layer--base {
+    background: #181818 url("../src/br.png") no-repeat -10% 200%;
+    background-size: 60%;
+    
+  }
+  
+  
+  
+  
+  
+  
+  #group1 {
+    height:140vh;
+  }
+  
+  #group1 .parallax__layer--base {
+    background: #141414 url("../src/batrender.png") no-repeat 130% 0%;
+  }
+  
+  #group1 .col {
+    vertical-align:middle;
+  }
+  
+  #group1 .col p{
+    margin-top:50px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+
+  #group3 {
+    z-index: 0; /* slide over group 2 */
+    height:170vh;
+  }
+  
+  #group3 .parallax__layer--base {
+    background:  #141414 url("../src/cnolan.png") no-repeat 140% bottom;
+    background-size: auto 90%;
+    height:170vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #text4{
+    margin-top:20vh;
+  }
+  
+  #group4{
+    height: 130vh;
+  }
+  
+  #group4 .parallax__layer--base {
+    background:  #161616 url("../src/Batcave.jpg") no-repeat 0 0;
+    background-size: cover ;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #group5 .parallax__layer--base {
+    background:  #111111 url("../src/nolan.png") no-repeat 0 bottom;
+    background-size: 100% ;
+    height:170vh;
+  }
+  
+  #group5{
+    height:170vh;
+  }
+  
+  
+  
+  
+  #video parallax__layer--base {
+    background:  #111111;
+    height:100vh;
+  }
+  
+  #video{
+    height:100vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  #group6 .parallax__layer--base {
+    background:  #000 url("../src/narrows.png") no-repeat 0px -300px;
+    background-size: 140%;
+  }
+  
+  #group6{
+    height:140vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #group7 .parallax__layer--base {
+    background:  #373737 url("../src/gotham city.png") no-repeat;
+    background-size:100% 100%;
+  }
+  
+  #group7{
+    height:120vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #group8 .parallax__layer--base {
+    background:  #000 url("../src/cave.jpg") no-repeat center bottom;
+    background-size:50%;
+    height:200vh;
+  }
+  
+  #group8{
+    height:200vh;
+  }
+  
+  #group8 .col:first-child p{
+    padding:8px;
+    margin-right:15vw;
+    margin-left:0;
+  }
+  
+  #group8 .col:last-child p{
+    padding:8px;
+    margin-left:17vw;
+    margin-right:0;
+  }
+  
+  #group8 .col{
+    vertical-align:top;
+  }
+  
+  #group8 .col p:first-child{
+    margin-top:50vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #group9 .parallax__layer--base {
+    background:  #111111 url("../src/joker2.png") no-repeat 0px 250px;
+    background-size:auto 100%;
+    height:220vh;
+  }
+  
+  #group9{
+    height:220vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #group10 .parallax__layer--base {
+    background:  #111111 url("../src/bale.png") no-repeat right 100px;
+    background-size:auto 100%;
+    height:180vh;
+  }
+  
+  #group10{
+    height:180vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  #group11 .parallax__layer--base {
+    background:  #111111 url("../src/brief.jpg") no-repeat right top;
+    background-size:cover;
+    height:100vh;
+  }
+  
+  #group11{
+    height:100vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #group12 .parallax__layer--base {
+    background:  #1c1c1e url("../src/story.jpg") no-repeat -400px bottom;
+    background-size:cover;
+    height:270vh;
+  }
+  
+  #group12{
+    height:270vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    #group13 .parallax__layer--base {
+    background:  #2f2d2f url("../src/ms.png") no-repeat bottom right;
+    background-size:auto 80%;
+    height:150vh;
+  }
+  
+  #group13{
+    height:150vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    #group14 .parallax__layer--base {
+    background:  #181818 url("../src/lingua.png") no-repeat center left;
+    background-size:auto 100%;
+    height:120vh;
+  }
+  
+  #group14{
+    height:120vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    #group15 .parallax__layer--base {
+    background:  #111 url("../src/momento.png") no-repeat 0 bottom;
+    height:100vh;
+  }
+  
+  #group15{
+    height:100vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #group16 .parallax__layer--base {
+    background:  #151515 url("../src/wind.png") no-repeat center bottom;
+    height:170vh;
+  }
+  
+  #group16{
+    height:170vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #group17 .parallax__layer--base {
+    background:  #121212 url("../src/target.jpg") no-repeat 0 bottom;
+    background-size:cover;
+    height:150vh;
+  }
+  
+  #group17{
+    height:150vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #group18 .parallax__layer--base {
+    background:  #121212 url("../src/media.jpg") no-repeat center 20px;
+    background-size: auto 100%;
+    height:200vh;
+  }
+  
+  #group18{
+    height:200vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #group19 .parallax__layer--base {
+    background:  #181818 url("../src/design.jpg") no-repeat 0 bottom;
+    background-size:cover;
+    height:180vh;
+  }
+  
+  #group19{
+    height:180vh;
+  }
+  
+  #group19 .col{
+    vertical-align:top;
+  }
+  
+  #group19 p{
+    margin-top:5px;
+    margin-bottom:5px;
+  }
+  
+  #group19 p:nth-child(odd){
+    margin-left:50px;
+    
+  }
+  
+  #group19 p:nth-child(even){
+    margin-right:50px;
+    border-radius:20px;
+    border-bottom-right-radius:0;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #group20 .parallax__layer--base {
+    background:  #212121 url("../src/marketing.jpg") no-repeat -400px bottom;
+    background-size:cover;
+    height:250vh;
+  }
+  
+  #group20{
+    height:250vh;
+  }
+  
+  #group20 .container .container{
+    height:auto;
+  }
+  
+  #group20 .container .container .col{
+    vertical-align:top;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #group21 .parallax__layer--base {
+    background:  #212121 url("../src/farcela.png") no-repeat left 180px;
+    background-size: auto 75%;
+    height:120vh;
+  }
+  
+  #group21{
+    height:120vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #group22 .parallax__layer--base {
+    background:  #212121 url("../src/end.jpg") no-repeat 0 bottom;
+    height:140vh;
+  }
+  
+  #group22{
+    height:140vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  #results .parallax__layer--base {
+    background:  #212121 url("../src/risultati.jpg") no-repeat top center;
+    background-size:auto 100%;
+    height:139vh;
+  }
+  
+  #results{
+    height:140vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  #end{
+    height:1vh;
+  }
+  
+  #end .parallax__layer--base {
+    background:  #111;
+    height:31vh;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+/* TEXT WRAPPERS */
+
+.container{
+  display:table;
+  height:100%;
+  margin:auto;
+  width:90vw;
+}
+
+.col{
+  display:table-cell;
+  width:50%;
+  height:100%;
+  vertical-align:middle;
+}
+
+
